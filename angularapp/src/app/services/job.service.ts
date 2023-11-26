@@ -43,7 +43,7 @@ export class JobService {
    }
 
    updateApplicationStatus(applicationId:number,applicantName:string,newStatus:string):Observable<JobApplication>{
-    return this.httpClient.put<JobApplication>(this.apiUrl+'/application/update/'+applicationId,{applicantName:applicantName,status:newStatus})
+    return this.httpClient.put<JobApplication>(this.apiUrl+'/application/update/'+applicationId,{applicantName:applicantName,status:newStatus},this.httpOptions)
    }
 
    getTotalApplicantsByJobPositionId(jobPositionId:any):Observable<number>{

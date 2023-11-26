@@ -9,7 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class JobApplicationsComponent implements OnInit {
 
-  positions : JobPosition[]=[]
+  jobPositions : JobPosition[]=[]
+
 
   constructor(private ss :JobService,private fb:FormBuilder) { }
 
@@ -24,9 +25,9 @@ export class JobApplicationsComponent implements OnInit {
 
     this.ss.getJobPostings().subscribe((data:JobPosition[])=>{
       console.log(data)
-      this.positions.push(...data)
+      this.jobPositions.push(...data)
       // console.log(this.positions)
-      console.log(this.positions)
+      console.log(this.jobPositions)
       
 
     })
@@ -36,6 +37,11 @@ export class JobApplicationsComponent implements OnInit {
   applyForJob(formData : FormGroup){
 
     if(formData.valid){
+
+
+      this.ss.applyForJob(formData.value).subscribe(()=>{
+        console.log("Data Added Successfully")
+      })
 
 
     }

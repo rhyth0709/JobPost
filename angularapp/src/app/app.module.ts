@@ -8,6 +8,8 @@ import { NavigationMenuComponent } from './navigation-menu/navigation-menu.compo
 import { ViewJobPostingsComponent } from './view-job-postings/view-job-postings.component';
 import { ViewJobApplicationsComponent } from './view-job-applications/view-job-applications.component';
 import { JobApplicationsComponent } from './job-applications/job-applications.component';
+import { JobPostingComponent } from './job-posting/job-posting.component';
+import { JobPostingFormComponent } from './job-posting-form/job-posting-form.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { JobApplicationsComponent } from './job-applications/job-applications.co
     NavigationMenuComponent,
     ViewJobPostingsComponent,
     ViewJobApplicationsComponent,
-    JobApplicationsComponent
+    JobApplicationsComponent,
+    JobPostingComponent,
+    JobPostingFormComponent
   ],
   imports: [
     BrowserModule,

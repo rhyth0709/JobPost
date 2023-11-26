@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { JobApplication } from 'src/models/job-application.model';
 import { JobPosition } from 'src/models/job-position.model';
 @Injectable({
@@ -43,10 +43,13 @@ export class JobService {
    }
 
    updateApplicationStatus(applicationId:number,applicantName:string,newStatus:string):Observable<JobApplication>{
-    return this.httpClient.put<JobApplication>(this.apiUrl+'/application/'+applicationId,{id:applicationId,applicantName:applicantName,status:newStatus},this.httpOptions)
+    return this.httpClient.put<JobApplication>(this.apiUrl+'/application/update/'+applicationId,{applicantName:applicantName,status:newStatus})
    }
 
-   getTotalApplicantsByJobPositionId(jobPositionId:number):Observable<JobPosition
+   getTotalApplicantsByJobPositionId(jobPositionId:any):Observable<number>{
+    return this.httpClient.get<number>(`${this.apiUrl}/applications/by-job-position?jobPositionId=${jobPositionId}`)
+  }
+  
 
 
 }

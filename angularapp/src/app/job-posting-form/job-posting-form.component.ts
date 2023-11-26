@@ -25,7 +25,9 @@ export class JobPostingFormComponent implements OnInit {
 
   submitJobPosting(){
 
-     this.ss.createJobPosition(this.jobPostingForm.value).subscribe(()=)
+     this.ss.createJobPosition(this.jobPostingForm.value).subscribe(()=>{
+      console.log("Created Job")
+     })
 
   }
 

@@ -1,12 +1,14 @@
-<form [formGroup]="" (ngSubmit)="applyForJob()">
+<form [formGroup]="jobApplicationForm" (ngSubmit)="applyForJob(jobApplicationForm)">
 
     <h3>Apply For Job</h3>
 
 
-    <select for="jobPositionId">Select Job Position</label>
+    <select for="jobPositionId" formControlName="jobPositionId" required>Select Job Position</select>
+    <option value="">------------------SELECT------------------</option>
+    <option *ngFor="let p of positions" [value]="p.id">{{p.title}}</option>
     <label for="applicantName">applicantName</label>
 
-    <input type="text" id="applicantName" formControlName="applicantName">
+    <input type="text" id="applicantName" required formControlName="applicantName">
 
     <button type="submit">Submit</button>
 </form>

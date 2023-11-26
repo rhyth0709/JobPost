@@ -8,13 +8,45 @@ import { JobPosition } from 'src/models/job-position.model';
 })
 export class JobService {
 
-  public apiUrl = "https://8080-abfbbcbcacd307836325ebabcbbfabeeffone.premiumproject.examly.io/api/job/";
+  public apiUrl = "https://8080-abfbbcbcacd307836325ebabcbbfabeeffone.premiumproject.examly.io/api/job";
 
   constructor(private httpClient:HttpClient) { }
 
+  httpOptions ={
+    headers:new HttpHeaders({
+
+      'Content-type':'application/json'
+
+  })}
+
 
   getJobPostings():Observable<JobPosition[]>{
-    return this.httpClient.get<JobPosition[]>(this.apiUrl+'/')
+    return this.httpClient.get<JobPosition[]>(this.apiUrl+'/positions')
   }
+  getJobApplications():Observable<JobApplication[]>{
+    return this.httpClient.get<JobApplication[]>(this.apiUrl+'/applications')
+  }
+
+  getPositionTitles():Observable<JobPosition[]>{
+    return this.httpClient.get<JobPosition[]>(this.apiUrl+'/position_title')
+  }
+
+  markJobAsClosed(jobId:number){
+
+  }
+  createJobPosition(jobPositionData:JobPosition):Observable<JobPosition>{
+   return this.httpClient.post<JobPosition>(this.apiUrl+'/position/add',jobPositionData,this.httpOptions)
+  }
+
+  applyForJob(jobApplicationData:JobApplication):Observable<JobApplication>{
+    return this.httpClient.post<JobApplication>(this.apiUrl+'/application/add',jobApplicationData,this.httpOptions)
+   }
+
+   updateApplicationStatus(applicationId:number,applicantName:string,newStatus:string):Observable<JobApplication>{
+    return this.httpClient.put<JobApplication>(this.apiUrl+'/application/'+applicationId,{id:applicationId,applicantName:applicantName,status:newStatus},this.httpOptions)
+   }
+
+   getTotalApplicantsByJobPositionId(jobPositionId:number):Observable<JobPosition
+
 
 }

@@ -3,8 +3,7 @@
     <h3>Apply For Job</h3>
 
 
-    <select for="jobPositionId" formControlName="jobPositionId" required>Select Job Position</select>
-    <option value="">------------------SELECT------------------</option>
+    <select  id="jobPositionId" for="jobPositionId" formControlName="jobPositionId" required>Select Job Position</select>
     <option *ngFor="let p of positions" [value]="p.id">{{p.title}}</option>
     <label for="applicantName">applicantName</label>
 

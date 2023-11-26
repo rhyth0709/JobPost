@@ -22,8 +22,13 @@ export class JobApplicationsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.ss.getPositionTitles().subscribe((data:JobPosition[])=>{
-      this.positions = data
+    this.ss.getJobPostings().subscribe((data:JobPosition[])=>{
+      console.log(data)
+      this.positions.push(...data)
+      // console.log(this.positions)
+      console.log(this.positions)
+      
+
     })
 
   }
@@ -31,7 +36,7 @@ export class JobApplicationsComponent implements OnInit {
   applyForJob(formData : FormGroup){
 
     if(formData.valid){
-      
+
 
     }
 

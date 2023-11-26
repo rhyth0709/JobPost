@@ -8,7 +8,7 @@ import { JobService } from '../services/job.service';
   styleUrls: ['./job-posting-form.component.css']
 })
 export class JobPostingFormComponent implements OnInit {
-
+  jobPostingForm:FormGroup
   constructor(private fb:FormBuilder,private ss:JobService) { }
   jobForm = this.fb.group({
     title :['',Validators.required],
@@ -16,7 +16,7 @@ export class JobPostingFormComponent implements OnInit {
     location:['',Validators.required],
     responsibilities:['',Validators.required],
     qualifications:['',Validators.required],
-    applicationDeadline:['',Validators.required],
+    applicationDeadline:['',Validators.required]
   })
 
   ngOnInit(): void {
@@ -24,9 +24,12 @@ export class JobPostingFormComponent implements OnInit {
 
   submitJobPosting(form:FormGroup){
 
-    if(form.valid)
-    {
 
+    this.jobPostingForm = form.value
+
+    if(this.jobPostingForm.valid)
+    {
+        
     }
   }
 

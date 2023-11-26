@@ -16,7 +16,9 @@
 
     <label for="qualifications">Qualifications</label>
 
-    <textarea id="qualifications" name="qualifications" required formControlName="qualifications"> </textarea>
+    <textarea id="qualifications" name="qualifications" formControlName="qualifications" required> 
+
+    </textarea>
 
     <label for="applicationDeadline">ApplicationDeadline</label>
     <input type="text" id="applicationDeadline" name="applicationDeadline" required formControlName="applicationDeadline">
@@ -24,7 +26,7 @@
 
 
 
-    <button type="submit">Submit</button>
+    <button type="submit" [disabled]="!jobForm.valid">Submit</button>
 
     
 </form>
